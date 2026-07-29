@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exam Registration Form</title>
+</head>
+
+<body>
+
+<h2 align="center">Exam Registration Form</h2>
+
+<form id="examForm">
+
+    <label>Register Number:</label><br>
+    <input type="text" id="regno"><br><br>
+
+    <label>Student Name:</label><br>
+    <input type="text" id="name"><br><br>
+
+    <label>Department:</label><br>
+    <select id="dept">
+        <option value="">Select Department</option>
+        <option>Computer Science</option>
+        <option>Information Technology</option>
+        <option>Commerce</option>
+        <option>Mathematics</option>
+    </select><br><br>
+
+    <label>Semester:</label><br>
+    <select id="semester">
+        <option value="">Select Semester</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+    </select><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" id="email"><br><br>
+
+    <label>Phone Number:</label><br>
+    <input type="text" id="phone"><br><br>
+
+    <label>Exam Type:</label><br>
+    <input type="radio" name="exam" value="Regular"> Regular
+    <input type="radio" name="exam" value="Arrear"> Arrear
+    <br><br>
+
+    <label>Subject Code:</label><br>
+    <input type="text" id="subject"><br><br>
+
+    <button type="button" onclick="registerExam()">Register</button>
+
+</form>
+
+<hr>
+
+<h3>Registration Details</h3>
+<p id="result"></p>
+
+<script>
+
+function registerExam()
+{
+    let regno = document.getElementById("regno").value;
+    let name = document.getElementById("name").value;
+    let dept = document.getElementById("dept").value;
+    let semester = document.getElementById("semester").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let subject = document.getElementById("subject").value;
+
+    let exam = "";
+    let exams = document.getElementsByName("exam");
+
+    for(let i=0; i<exams.length; i++)
+    {
+        if(exams[i].checked)
+        {
+            exam = exams[i].value;
+        }
+    }
+
+    if(regno=="" || name=="" || dept=="" || semester=="" || email=="" || phone=="" || exam=="" || subject=="")
+    {
+        alert("Please fill all the fields.");
+        return;
+    }
+
+    document.getElementById("result").innerHTML =
+    "<b>Registration Successful!</b><br><br>" +
+    "Register Number: " + regno + "<br>" +
+    "Name: " + name + "<br>" +
+    "Department: " + dept + "<br>" +
+    "Semester: " + semester + "<br>" +
+    "Email: " + email + "<br>" +
+    "Phone: " + phone + "<br>" +
+    "Exam Type: " + exam + "<br>" +
+    "Subject Code: " + subject;
+
+    alert("Exam Registered Successfully!");
+}
+
+</script>
+
+</body>
+</html>
